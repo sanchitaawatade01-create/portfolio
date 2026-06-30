@@ -1,0 +1,746 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanchita Awatade - Portfolio</title>
+    <!-- Bootstrap CSS & Icons -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+
+    <style>
+        /* CORE REBRANDED THEME COLORS */
+        :root {
+            --bg-main: #0f172a;
+            /* Deep Midnight Navy */
+            --bg-card: #1e293b;
+            /* Dark Slate Panels */
+            --accent-cyan: #22d3ee;
+            /* Electric Neon Cyan for Links/Highlights */
+            --text-main: #f8fafc;
+            /* Crisp Off-White Core Text */
+            --text-muted: #94a3b8;
+            /* Soft Secondary Text */
+        }
+
+        body {
+            background-color: var(--bg-main);
+            color: var(--text-main);
+            font-family: system-ui, -apple-system, sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* FLOATING BUTTONS */
+        .whatsapp-btn,
+        .top-btn {
+            position: fixed;
+            bottom: 24px;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            color: white;
+            text-decoration: none;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .whatsapp-btn {
+            left: 24px;
+            background-color: #25d366;
+        }
+
+        .whatsapp-btn:hover {
+            transform: scale(1.1);
+            color: white;
+        }
+
+        .top-btn {
+            right: 24px;
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .top-btn:hover {
+            background-color: var(--accent-cyan);
+            color: var(--bg-main);
+            transform: translateY(-5px);
+        }
+
+        /* NAVBAR */
+        .custom-navbar {
+            background-color: rgba(15, 23, 42, 0.9) !important;
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .custom-navbar .nav-link {
+            color: var(--text-muted) !important;
+            font-weight: 500;
+            transition: color 0.2s ease;
+        }
+
+        .custom-navbar .nav-link:hover,
+        .custom-navbar .nav-link.active {
+            color: var(--accent-cyan) !important;
+        }
+
+        /* SECTION HOVERS & SEPARATORS */
+        section {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent-cyan);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+
+        /* UNIFIED LINK STYLING */
+        a {
+            color: var(--accent-cyan);
+            transition: opacity 0.2s ease;
+        }
+
+        a:hover {
+            opacity: 0.8;
+        }
+
+        /* SLEEK NEOMORPHIC STYLING FOR ALL CARDS */
+        .skill-card,
+        .edu-card,
+        .project-card,
+        .achievement-panel {
+            background-color: var(--bg-card);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 28px;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: var(--text-main) !important;
+        }
+
+        .skill-card:hover,
+        .edu-card:hover,
+        .project-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(34, 211, 238, 0.3);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.4);
+        }
+
+        /* CARDS INTERNAL ICON BOXES */
+        .icon-box {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 22px;
+            margin-bottom: 20px;
+            background: rgba(34, 211, 238, 0.1);
+            color: var(--accent-cyan);
+        }
+
+        /* TRANSLUCENT INPUT FIELDS */
+        .form-control,
+        .form-control:focus {
+            background-color: rgba(15, 23, 42, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--text-main);
+        }
+
+        .form-control:focus {
+            border-color: var(--accent-cyan);
+            box-shadow: 0 0 0 2px rgba(34, 211, 238, 0.2);
+        }
+
+        .form-label {
+            color: var(--text-muted);
+        }
+
+        .captcha-box {
+            background-color: rgba(255, 255, 255, 0.05);
+            color: var(--accent-cyan) !important;
+            border-color: rgba(255, 255, 255, 0.1) !important;
+        }
+
+        /* CAROUSEL IMPROVEMENT */
+        .carousel {
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Style the placeholder text globally for your inputs */
+        .form-control::placeholder {
+            color: rgba(255, 255, 255, 0.4) !important;
+            /* Low opacity/muted look */
+            font-style: italic;
+            filter: blur(0.5px);
+            /* Adds a subtle realistic blur effect */
+            transition: all 0.3s ease;
+        }
+
+        /* Smoothly remove the blur and fade out the placeholder when the user clicks the box */
+        .form-control:focus::placeholder {
+            filter: blur(0px);
+            opacity: 0.2;
+        }
+
+        /* Target the title links specifically inside your project cards */
+        .project-card h5 a {
+            color: var(--accent-cyan) !important;
+            text-decoration: underline !important;
+            text-underline-offset: 4px;
+            /* Makes the underline look clean and breathable */
+            transition: color 0.2s ease-in-out, text-decoration-color 0.2s ease-in-out;
+        }
+
+        /* Give them a distinct look when a user hovers over them */
+        .project-card h5 a:hover {
+            color: #34d399 !important;
+            /* Changes to a vibrant mint green on hover */
+            text-decoration: underline !important;
+        }
+         
+    </style>
+</head>
+
+<body>
+
+    <!-- FLOATING BUTTONS -->
+    <a href="https://wa.me/9922938767" class="whatsapp-btn" target="_blank" title="Chat on WhatsApp">
+        <i class="bi bi-whatsapp"></i>
+    </a>
+
+    <a href="#" class="top-btn" title="Back to Top">
+        <i class="bi bi-arrow-up-short"></i>
+    </a>
+
+     <nav class="navbar navbar-expand-lg custom-navbar navbar-dark sticky-top">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-center gap-2" href="#">
+            <div class="bg-light rounded-circle d-flex align-items-center justify-content-center"
+                style="width: 32px; height: 32px;">
+                <i class="bi bi-person-fill text-dark"></i>
+            </div>
+            <span class="fw-bold text-white tracking-wide">Sanchita Awatade</span>
+        </a>
+        <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse"
+            data-bs-target="#collapsibleNavbar">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="collapsibleNavbar">
+            <ul class="navbar-nav ms-auto gap-1">
+                <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+                <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                <li class="nav-item"><a class="nav-link" href="#skill">Skills</a></li>
+                <li class="nav-item"><a class="nav-link" href="#education">Education</a></li>
+                <li class="nav-item"><a class="nav-link" href="#project">Projects</a></li>
+                <li class="nav-item"><a class="nav-link" href="#achievement">Achievements</a></li>
+                <li class="nav-item"><a class="nav-link" href="#resume">Resume</a></li>
+                <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<script>
+    const navLinks = document.querySelectorAll('.nav-link');
+    const menuToggle = document.getElementById('collapsibleNavbar');
+    
+    navLinks.forEach((link) => {
+        link.addEventListener('click', () => {
+            
+            if (window.getComputedStyle(menuToggle).display !== 'none') {
+                const bsCollapse = bootstrap.Collapse.getInstance(menuToggle) || new bootstrap.Collapse(menuToggle);
+                bsCollapse.hide();
+            }
+        });
+    });
+</script>
+    <!-- HOME SECTION -->
+    <section id="home" class="py-5 d-flex align-items-center min-vh-100">
+        <div class="container">
+            <div class="row align-items-center g-5">
+                <div class="col-lg-6 order-2 order-lg-1">
+                    <h5 class="text-uppercase fw-bold tracking-wider mb-2" style="color: var(--accent-cyan);">Hello, I'm
+                    </h5>
+                    <h1 class="display-3 fw-bold text-white mb-3">Sanchita Awatade</h1>
+                    <h3 class="h4 mb-4 fw-medium" style="color: var(--text-muted);">Electronics & Telecommunication
+                        Engineering Student</h3>
+                    <p class="lead mb-5" style="font-size: 1.1rem; line-height: 1.7; color: var(--text-muted);">
+                        I am a passionate E&TC engineering student focused on Embedded Systems, IoT architecture,
+                        hardware design schemes, and sleek contemporary Web Development workflows.
+                    </p>
+                    <div class="d-flex flex-wrap gap-3">
+                        <a href="#about" class="btn btn-cyan px-4 py-2.5 rounded-3 fw-semibold shadow-sm"
+                            style="background-color: var(--accent-cyan); color: var(--bg-main); border: none;">About
+                            Me</a>
+                        <a href="#project" class="btn btn-outline-light px-4 py-2.5 rounded-3 fw-semibold">My
+                            Projects</a>
+                        <a href="#contact" class="btn btn-success px-4 py-2.5 rounded-3 fw-semibold shadow-sm">Contact
+                            Me</a>
+                    </div>
+                </div>
+                <div class="col-lg-6 order-1 order-lg-2 text-center">
+                    <div class="position-relative d-inline-block">
+                        <div class="position-absolute translate-middle start-50 top-50 bg-info opacity-10 rounded-circle filter blur"
+                            style="width: 120%; height: 120%; z-index: -1;"></div>
+                        <img src="image/WhatsApp Image 2026-06-26 at 9.23.18 PM.jpeg" alt="Profile Photo"
+                            class="img-fluid rounded-circle shadow-lg border p-2"
+                            style="width: 350px; height: 350px; object-fit: cover; border-color: rgba(255,255,255,0.1) !important; background: var(--bg-card) !important;">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT ME SECTION -->
+    <section id="about" class="py-5">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white section-title position-relative d-inline-block">About Me</h2>
+            </div>
+
+            <div class="row align-items-center g-5">
+                <div class="col-lg-5">
+                    <div id="aboutCarousel" class="carousel slide carousel-fade shadow-md rounded-4 overflow-hidden"
+                        data-bs-ride="carousel">
+                        <div class="carousel-inner">
+                            <div class="carousel-item active" data-bs-interval="3000"><img src="image/1.jpg"
+                                    alt="Display 1" class="d-block w-100 object-fit-cover" style="height: 380px;"></div>
+                            <div class="carousel-item" data-bs-interval="3000"><img src="image/2.png" alt="Display 2"
+                                    class="d-block w-100 object-fit-cover" style="height: 380px;"></div>
+                            <div class="carousel-item" data-bs-interval="3000"><img src="image/3.jpg" alt="Display 3"
+                                    class="d-block w-100 object-fit-cover" style="height: 380px;"></div>
+                            <div class="carousel-item" data-bs-interval="3000"><img src="image/IC.jpg" alt="Display 4"
+                                    class="d-block w-100 object-fit-cover" style="height: 380px;"></div>
+                            <div class="carousel-item" data-bs-interval="3000"><img src="image/Mobile.avif"
+                                    alt="Display 5" class="d-block w-100 object-fit-cover" style="height: 380px;"></div>
+                            <div class="carousel-item" data-bs-interval="3000"><img src="image/2.png" alt="Display 6"
+                                    class="d-block w-100 object-fit-cover" style="height: 380px;"></div>
+                        </div>
+                        <button class="carousel-control-prev" type="button" data-bs-target="#aboutCarousel"
+                            data-bs-slide="prev">
+                            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        </button>
+                        <button class="carousel-control-next" type="button" data-bs-target="#aboutCarousel"
+                            data-bs-slide="next">
+                            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="col-lg-7 ps-lg-5">
+                    <p style="line-height: 1.6; color: var(--text-muted);">
+                        Hello, I am Sanchita, a third-year Diploma student in Electronics and Telecommunication
+                        Engineering (ENTC). I am passionate about electronics, communication systems, and emerging
+                        technologies. Throughout my academic journey, I have developed a strong foundation in electronic
+                        circuits, digital systems, and telecommunication concepts.
+                    </p>
+                    <p class="mb-4" style="line-height: 1.6; color: var(--text-muted);">
+                        I am a dedicated and hardworking individual with good teamwork and communication abilities, and
+                        I am eager to gain industry experience and contribute to innovative technological solutions in
+                        the future.
+                    </p>
+                    <div class="row g-3">
+                        <div class="col-sm-6 d-flex align-items-center gap-2" style="color: var(--text-main);">
+                            <i class="bi bi-check-circle-fill text-success"></i> <span>Agile Logic & Problem
+                                Solving</span>
+                        </div>
+                        <div class="col-sm-6 d-flex align-items-center gap-2" style="color: var(--text-main);">
+                            <i class="bi bi-check-circle-fill text-success"></i> <span>Hardware-Software
+                                Co-design</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section class="py-5" id="skill">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white section-title d-inline-block">Skills</h2>
+                <p style="color: var(--text-muted);">Core 3rd-Year Electronics & Telecommunication Engineering Stacks
+                </p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card h-100">
+                        <div class="icon-box"><i class="bi bi-cpu"></i></div>
+                        <h5 class="fw-bold text-white">Advanced Embedded Systems</h5>
+                        <p style="color: var(--text-muted);" class="small mb-0">Microcontroller management practices
+                            across Arduino environments, ESP32 deployments, and STM32 processing nodes.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card h-100">
+                        <div class="icon-box"><i class="bi bi-wifi"></i></div>
+                        <h5 class="fw-bold text-white">IoT Protocols & Telemetry</h5>
+                        <p style="color: var(--text-muted);" class="small mb-0">Designing edge-to-cloud interfaces
+                            utilizing secure MQTT, HTTP REST, and WebSockets architectures.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card h-100">
+                        <div class="icon-box"><i class="bi bi-code-slash"></i></div>
+                        <h5 class="fw-bold text-white">E&TC Hardware Protocols</h5>
+                        <p style="color: var(--text-muted);" class="small mb-0">Implementing robust synchronous and
+                            asynchronous serial data exchanges using SPI, I2C, and UART configurations.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card h-100">
+                        <div class="icon-box"><i class="bi bi-lightning-charge"></i></div>
+                        <h5 class="fw-bold text-white">Signals, Systems & Tools</h5>
+                        <p style="color: var(--text-muted);" class="small mb-0">Mathematical analysis of communication
+                            paths. Practical experience with MATLAB scripting and Proteus suites.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card h-100">
+                        <div class="icon-box"><i class="bi bi-broadcast"></i></div>
+                        <h5 class="fw-bold text-white">Core Telecommunication</h5>
+                        <p style="color: var(--text-muted);" class="small mb-0">Analysis of continuous analog parameters
+                            alongside digital modulation systems including FSK and PSK frameworks.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-4">
+                    <div class="skill-card h-100">
+                        <div class="icon-box"><i class="bi bi-browser-edge"></i></div>
+                        <h5 class="fw-bold text-white">Dynamic User Interfaces</h5>
+                        <p style="color: var(--text-muted);" class="small mb-0">Developing responsive edge-device
+                            monitoring dashboards using clean HTML5, CSS3, JS, and Bootstrap grids.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section class="py-5" id="education">
+        <div class="container py-4">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white section-title d-inline-block">Education</h2>
+                <p style="color: var(--text-muted);">Verified institutional milestone details</p>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-md-6 col-lg-5">
+                    <div class="edu-card text-center h-100">
+                        <div class="icon-box mx-auto"><i class="bi bi-mortarboard-fill"></i></div>
+                        <h5 class="fw-bold text-white mb-1">SSC Certification</h5>
+                        <span class="badge bg-secondary mb-3">Graduated: 2024</span>
+                        <p style="color: var(--text-muted);" class="small mb-0">Strong conceptual emphasis on Analytical
+                            Mathematics, Fundamental Physics principles, and logical deductions.</p>
+                    </div>
+                </div>
+                <div class="col-md-6 col-lg-5">
+                    <div class="edu-card text-center h-100">
+                        <div class="icon-box mx-auto"><i class="bi bi-award-fill"></i></div>
+                        <h5 class="fw-bold text-white mb-1">Engineering Diploma (E&TC)</h5>
+                        <span class="badge bg-info text-dark mb-3">2026 - Present</span>
+                        <p style="color: var(--text-muted);" class="small mb-0">Advanced laboratory exploration in
+                            integrated silicon platforms, network analysis, transceiver design, and computing systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROJECTS SECTION -->
+    <section id="project" class="py-5">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white section-title d-inline-block">Projects</h2>
+                <p style="color: var(--text-muted);">Working sandbox instances and design modules</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="project-card d-flex flex-column h-100">
+                        <h5 class="fw-bold mb-3">
+                            <a href="Interest Calculator.html"
+                                class="text-decoration-none d-flex align-items-center gap-2"
+                                style="color: var(--accent-cyan);">
+                                <i class="bi bi-calculator-fill"></i> JavaScript Calculation Engine
+                            </a>
+                        </h5>
+                        <p style="color: var(--text-muted);" class="small flex-grow-1">A dynamic computational layout
+                            utilizing evaluated event listeners to deliver quick calculation responses.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card d-flex flex-column h-100">
+                        <h5 class="fw-bold mb-3">
+                            <a href="department.html" class="text-decoration-none d-flex align-items-center gap-2"
+                                style="color: var(--accent-cyan);">
+                                <i class="bi bi-window-fullscreen"></i> Grid Portfolio Interface
+                            </a>
+                        </h5>
+                        <p style="color: var(--text-muted);" class="small flex-grow-1">A fully scalable, screen-agnostic
+                            portfolio platform engineered inside contemporary semantic HTML/CSS structures.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="project-card d-flex flex-column h-100">
+                        <h5 class="fw-bold mb-3">
+                            <a href="contact.html" class="text-decoration-none d-flex align-items-center gap-2"
+                                style="color: var(--accent-cyan);">
+                                <i class="bi bi-send-check-fill"></i> Form Gateway Module
+                            </a>
+                        </h5>
+                        <p style="color: var(--text-muted);" class="small flex-grow-1">An integrated user message
+                            formatting client dashboard built with built-in client-side input validation.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section class="py-5" id="achievement">
+        <div class="container">
+            <div class="text-center mb-5">
+                <h2 class="fw-bold text-white section-title d-inline-block">Achievements</h2>
+                <p style="color: var(--text-muted);">Academic standing tracking information</p>
+            </div>
+
+            <div class="row justify-content-center">
+                <div class="col-lg-9">
+                    <div class="achievement-panel">
+                        <p class="mb-3" style="line-height: 1.75; color: var(--text-main);">
+                            Currently positioned within the final year tier of my engineering diploma track. I focus
+                            daily on maintaining consistent technical execution, staying up to date on new industry
+                            tooling, and bridging theoretical concepts with engineering practices.
+                        </p>
+                        <p class="mb-0" style="line-height: 1.75; color: var(--text-muted);">
+                            My milestones are defined by working hardware builds, cleaner codebase structures, and my
+                            capacity to design scalable solutions for complex, multi-tiered project systems.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- RESUME CAPTURE MODEL -->
+    <section class="py-5" id="resume">
+        <div class="container py-4">
+            <div class="row justify-content-center">
+                <div class="col-md-8 col-lg-6 text-center">
+                    <h2 class="fw-bold text-white section-title d-inline-block">Resume</h2>
+                    <div class="project-card p-4">
+                        <div class="d-flex align-items-center justify-content-between flex-wrap gap-3">
+                            <div class="d-flex align-items-center gap-3 text-start">
+                                <div class="rounded d-flex align-items-center justify-content-center"
+                                    style="width: 48px; height: 48px; background: rgba(34, 211, 238, 0.1); color: var(--accent-cyan);">
+                                    <i class="bi bi-file-earmark-pdf fs-4"></i>
+                                </div>
+                                <div>
+                                    <h5 class="fw-bold mb-0 text-white">Verified Professional CV</h5>
+                                    <small style="color: var(--text-muted);">E&TC Technical Profile Summary</small>
+                                </div>
+                            </div>
+                            <a href="my resume.html"
+                                class="btn btn-outline-light rounded-3 px-4 py-2 text-uppercase font-monospace tracking-wider small">View
+                                Resume <i class="bi bi-arrow-right ms-1"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="py-5" id="contact">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-8">
+
+                    <h2 class="section-title text-center d-block mx-auto mb-5" style="color: #ffffff;">Contact Me</h2>
+
+                    <div class="achievement-panel p-4 rounded-4"
+                        style="background: rgba(255,255,255,0.05); backdrop-filter: blur(10px);">
+                        <h5 class="fw-bold mb-4 text-white border-bottom pb-2">Contact</h5>
+
+                        <form id="contactForm" action="#" method="POST" onsubmit="return handleWhatsAppRedirect(event)">
+                            <div class="row g-3">
+
+                                <div class="col-sm-6">
+                                    <label class="form-label small fw-bold text-white-50">Full Name</label>
+                                    <input type="text" id="userName"
+                                        class="form-control rounded-3 bg-dark text-white border-secondary"
+                                        placeholder="Your Identity" required>
+                                </div>
+
+                                <div class="col-sm-6">
+                                    <label class="form-label small fw-bold text-white-50">Email Address</label>
+                                    <input type="email" id="userEmail"
+                                        class="form-control rounded-3 bg-dark text-white border-secondary"
+                                        placeholder="user@domain.com" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold text-white-50">Subject Title</label>
+                                    <input type="text" id="subject"
+                                        class="form-control rounded-3 bg-dark text-white border-secondary"
+                                        placeholder="Context flag parameter" required>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold text-white-50">Message</label>
+                                    <textarea id="message" rows="4"
+                                        class="form-control rounded-3 bg-dark text-white border-secondary"
+                                        placeholder="Write comprehensive message payload content here..."
+                                        required></textarea>
+                                </div>
+
+                                <div class="col-12">
+                                    <label class="form-label small fw-bold d-block text-white-50">Security
+                                        Verification</label>
+                                    <div class="d-flex align-items-center gap-2 flex-wrap">
+                                        <div id="captchaQuestion"
+                                            class="captcha-box px-3 py-2 border rounded-3 font-monospace fs-5 text-white bg-dark border-secondary">
+                                        </div>
+                                        <button type="button" class="btn btn-outline-light rounded-3"
+                                            onclick="generateCaptcha()" title="Refresh Captcha">
+                                            <i class="bi bi-arrow-clockwise"></i>
+                                        </button>
+                                        <div class="flex-grow-1" style="min-width: 150px;">
+                                            <input type="number" id="captchaAnswer"
+                                                class="form-control rounded-3 bg-dark text-white border-secondary"
+                                                placeholder="Enter result" required>
+                                        </div>
+                                    </div>
+                                    <div id="captchaError" class="text-danger small mt-2 d-none">
+                                        <i class="bi bi-exclamation-triangle-fill"></i> Verification failed. Incorrect
+                                        sum calculation.
+                                    </div>
+                                </div>
+
+                                <div class="col-12 text-end mt-4">
+                                    <button type="submit"
+                                        class="btn btn-success rounded-3 px-4 py-2 fw-semibold text-uppercase small tracking-wide shadow-sm">
+                                        <i class="bi bi-whatsapp me-2"></i>Send Message
+                                    </button>
+                                </div>
+
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <script>
+        // 1. CONFIGURATION: Set your mobile phone number here (include Country Code, omit '+' or spaces)
+        // Example: "919876543210" for an Indian mobile number
+        const WHATSAPP_PHONE_NUMBER = "910000000000";
+
+        let currentCaptchaResult = 0;
+
+        // 2. GENERATE CAPTCHA MATH
+        function generateCaptcha() {
+            const num1 = Math.floor(Math.random() * 10) + 1;
+            const num2 = Math.floor(Math.random() * 10) + 1;
+            currentCaptchaResult = num1 + num2;
+
+            const questionElement = document.getElementById("captchaQuestion");
+            if (questionElement) {
+                questionElement.innerText = `${num1} + ${num2} = ?`;
+            }
+        }
+
+        // 3. VALIDATE & OPEN WHATSAPP API
+        function handleWhatsAppRedirect(event) {
+            event.preventDefault(); // Stop default form execution paths
+
+            const captchaAnswer = document.getElementById("captchaAnswer").value;
+            const captchaError = document.getElementById("captchaError");
+
+            // Validate Captcha Summation 
+            if (parseInt(captchaAnswer) !== currentCaptchaResult) {
+                captchaError.classList.remove("d-none");
+                return false;
+            }
+            captchaError.classList.add("d-none");
+
+            // Extract Input Values
+            const name = document.getElementById("userName").value;
+            const email = document.getElementById("userEmail").value;
+            const subj = document.getElementById("subject").value;
+            const msg = document.getElementById("message").value;
+
+            // Build neat, readable message string for your WhatsApp notification screen
+            const textPayload = `*New Portfolio Message* \n\n` +
+                `👤 *Name:* ${name}\n` +
+                `📧 *Email:* ${email}\n` +
+                `📌 *Subject:* ${subj}\n\n` +
+                `📝 *Message:* \n${msg}`;
+
+            // Safely map string syntax characters via standard URI Encoding
+            const targetUrl = `https://api.whatsapp.com/send?phone=${WHATSAPP_PHONE_NUMBER}&text=${encodeURIComponent(textPayload)}`;
+
+            // Dispatch window router straight to a new application/web tab
+            window.open(targetUrl, '_blank');
+
+            // Optional: Reset verification parameters for subsequent messages
+            generateCaptcha();
+            document.getElementById("captchaAnswer").value = "";
+            return true;
+        }
+
+        // Initialize Captcha immediately on load
+        document.addEventListener("DOMContentLoaded", function () {
+            generateCaptcha();
+        });
+    </script>
+    
+    
+
+    <!-- FOOTER SECTION -->
+    <footer class="py-4" id="footer" style="background-color: #0b1329; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="container">
+            <div class="row align-items-center justify-content-between g-3 small">
+
+                <!-- Branding & Copyright Info -->
+                <div class="col-md-6 text-md-start text-center">
+                    <span class="fw-bold text-white text-uppercase tracking-wider">Sanchita Awatade</span>
+                    <p class="mb-0 mt-1" style="font-size: 11px; color: var(--text-muted);">
+                        Diploma in Electronics & Telecommunication Engineering | © 2026 All Rights Reserved
+                    </p>
+                </div>
+
+                <!-- Navigation Links -->
+                <div class="col-md-4 text-md-end text-center">
+                    <a href="#resume" class="text-decoration-none me-3"
+                        style="color: var(--text-muted); transition: color 0.2s;">Resume Blueprint</a>
+                    <a href="#contact" class="text-decoration-none"
+                        style="color: var(--text-muted); transition: color 0.2s;">Contact Terminal</a>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+   
+
+</body>
+
+</html>

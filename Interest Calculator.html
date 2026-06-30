@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+       div{
+        background-color: aqua;
+        padding: 10px;  
+        border:2px solid red ;
+       }
+    </style>
+</head>
+<body>
+    <center>
+    <form onsubmit="return calculator()">  
+        <table border="5">
+            <tr>
+            <th colspan="2">Simple Instreted Calculator</th>
+            </tr>
+
+            <tr>
+                <td> <label>Principle Amount(s):</label></td>
+            
+                <td>
+                <input type="number" id="amount">
+                </td>
+            </tr>
+
+
+
+
+            <tr>
+                <td><label>Annual Interest Rate(%):</label></td>
+
+            <td>
+                <input type="number" id="rate">
+            </td>
+            </tr>
+
+
+
+            <tr>
+                <td><label>Number Of years:</label></td>
+
+            <td>
+                <input type="number" id="time">
+            </td>
+            </tr>
+
+
+            <tr>
+                <td></td>
+
+                <td>
+                    <input type="submit" value="calculator">
+                </td>
+            </tr>
+
+            <tr>
+                <td colspan="2">
+                    <div id="show">
+                    </div>                   
+                </td>
+            </tr>
+
+            </center>
+        </table>
+    </form>
+
+    <script>
+        function calculator()
+        {
+            var p=document.getElementById("amount").value;
+            var t=document.getElementById("time").value;
+            var r=document.getElementById("rate").value;
+            var si=(p*r*t)/100
+            var result="amount="+p
+            result=result+"<br>rate%"+r
+            result=result+"<br>time="+t
+            result=result+"<hr>SI="+si
+            var total=parseFloat(p)+parseFloat(si)
+            result=result+"<br>Total amount="+total
+            document.getElementById("show").innerHTML=result
+            return false;
+         }
+    </script>
+    
+</body>
+</html>

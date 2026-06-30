@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anjali Rajage - Premium Portfolio</title>
+    
+    <!-- Bootstrap 5.3.2 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- FontAwesome 6 Icons -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" rel="stylesheet">
+    <!-- Google Fonts: Inter & Outfit -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            /* Ultimate Premium Glass Color Spectrum */
+            --bg-deep: #0b0f19;          /* Deepest Space Void */
+            --glass-card: rgba(22, 28, 45, 0.45); /* Frosty Obsidian Glass */
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --hyper-cyan: #00f2fe;        /* Neon Cyber Cyan */
+            --electric-purple: #4facfe;    /* Electric Aurora Violet */
+            --emerald-glow: #05f2c7;      /* Vivid Tech Mint */
+            --text-glow: #f1f5f9;         /* Ultimate Crisp White */
+            --text-dim: #94a3b8;          /* Premium Cool Grey */
+        }
+
+        body {
+            font-family: 'Inter', system-ui, sans-serif;
+            background-color: var(--bg-deep);
+            color: var(--text-glow);
+            line-height: 1.7;
+            padding: 3rem 0;
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.15) 0%, transparent 40%),
+                radial-gradient(circle at 90% 80%, rgba(6, 182, 212, 0.15) 0%, transparent 40%);
+            background-attachment: fixed;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Outfit', sans-serif;
+        }
+
+        /* Pure Fluid Entry Animations */
+        .reveal-frame {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: elegantReveal 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+        }
+
+        @keyframes elegantReveal {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Glassmorphic Master Layout Container */
+        .glass-mainframe {
+            background: var(--glass-card);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
+            box-shadow: 0 40px 100px -30px rgba(0, 0, 0, 0.7);
+            overflow: hidden;
+        }
+
+        /* Futuristic Dynamic Banner */
+        .aurora-header {
+            background: linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(30, 27, 75, 0.8) 100%);
+            border-bottom: 1px solid var(--glass-border);
+            padding: 4rem 3.5rem;
+            position: relative;
+        }
+
+        .aurora-header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--hyper-cyan), var(--electric-purple), transparent);
+        }
+
+        /* Section Headings with Micro Dots */
+        .section-headline {
+            font-size: 0.9rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: var(--hyper-cyan);
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .section-headline::after {
+            content: '';
+            flex-grow: 1;
+            height: 1px;
+            background: linear-gradient(90deg, rgba(0, 242, 254, 0.3), transparent);
+        }
+
+        /* Magnetic Neon Contact Badges */
+        .neon-contact-link {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--glass-border);
+            padding: 12px 22px;
+            border-radius: 16px;
+            font-size: 0.88rem;
+            font-weight: 500;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            color: var(--text-glow);
+            text-decoration: none;
+            transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+
+        .neon-contact-link:hover {
+            border-color: var(--hyper-cyan);
+            color: #ffffff;
+            transform: translateY(-4px);
+            background: rgba(0, 242, 254, 0.08);
+            box-shadow: 0 15px 30px -10px rgba(0, 242, 254, 0.3);
+        }
+
+        /* Metallic Tech Skill Pill Tokens */
+        .token-skill {
+            background: rgba(255, 255, 255, 0.02);
+            color: var(--text-dim);
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 12px 20px;
+            border-radius: 16px;
+            border: 1px solid var(--glass-border);
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .token-skill:hover {
+            border-color: var(--electric-purple);
+            color: #ffffff;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.15) 0%, rgba(0, 242, 254, 0.15) 100%);
+            transform: scale(1.05) translateY(-2px);
+            box-shadow: 0 10px 25px -5px rgba(79, 70, 229, 0.25);
+        }
+
+        /* Showcase Card Layouts */
+        .glass-showcase-card {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid var(--glass-border);
+            padding: 30px;
+            border-radius: 24px;
+            transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-showcase-card:hover {
+            background: rgba(255, 255, 255, 0.03);
+            border-color: rgba(0, 242, 254, 0.2);
+            transform: translateY(-5px) scale(1.01);
+            box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Glass Grade Container */
+        .neon-score-box {
+            background: linear-gradient(135deg, rgba(5, 242, 199, 0.05) 0%, rgba(0, 242, 254, 0.05) 100%);
+            border: 1px solid rgba(5, 242, 199, 0.15);
+            padding: 18px;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .neon-score-box .score-value {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: var(--emerald-glow);
+            text-shadow: 0 0 15px rgba(5, 242, 199, 0.3);
+        }
+
+        /* Floating Modern Print FAB Button */
+        .fab-printer {
+            background: linear-gradient(135deg, var(--electric-purple) 0%, var(--hyper-cyan) 100%);
+            border: none;
+            color: #0b0f19;
+            font-weight: 700;
+            padding: 14px 28px;
+            border-radius: 50px;
+            box-shadow: 0 20px 40px -10px rgba(0, 242, 254, 0.4);
+            transition: all 0.3s ease;
+        }
+
+        .fab-printer:hover {
+            transform: translateY(-3px) scale(1.03);
+            box-shadow: 0 25px 50px -5px rgba(0, 242, 254, 0.6);
+            color: #0b0f19;
+        }
+
+        /* Clean Print CSS Pipeline Optimization */
+        @media print {
+            body {
+                background: #ffffff !important;
+                color: #000000 !important;
+                padding: 0 !important;
+            }
+            .glass-mainframe {
+                background: transparent !important;
+                border: none !important;
+                box-shadow: none !important;
+                border-radius: 0 !important;
+            }
+            .aurora-header {
+                background: transparent !important;
+                padding: 20px 0 !important;
+            }
+            .aurora-header::after {
+                background: #000000 !important;
+                height: 1px !important;
+            }
+            .neon-contact-link, .token-skill, .glass-showcase-card, .neon-score-box {
+                background: transparent !important;
+                border: 1px solid #e2e8f0 !important;
+                color: #000000 !important;
+                box-shadow: none !important;
+                border-radius: 8px !important;
+            }
+            .section-headline {
+                color: #000000 !important;
+            }
+            .section-headline::after {
+                background: #e2e8f0 !important;
+            }
+            .text-dim, .text-muted {
+                color: #475569 !important;
+            }
+            .score-value {
+                color: #000000 !important;
+                text-shadow: none !important;
+            }
+            .action-hide { display: none !important; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- UTILITY ACTION ROW -->
+    <div class="container d-flex justify-content-end mb-4 px-4 action-hide">
+        <button onclick="window.print()" class="btn fab-printer d-flex align-items-center gap-2">
+            <i class="fa-solid fa-cloud-arrow-down fs-5"></i> Export Premium Resume / PDF
+        </button>
+    </div>
+
+    <!-- MAIN PORTFOLIO MODULE CONTAINER -->
+    <div class="container d-flex justify-content-center px-2 px-md-4 mb-5">
+        <div class="glass-mainframe w-100 reveal-frame" style="max-width: 1050px;">
+            
+            <!-- MASTER BANNER HERO -->
+            <header class="aurora-header">
+                <div class="row align-items-center g-4">
+                    <div class="col-xl-7 text-center text-xl-start">
+                        <h1 class="display-4 m-0 text-white tracking-tight" style="font-weight: 800; letter-spacing: -2px;">Sanchita Awatade</h1>
+                        <p class="m-0 mt-3 fw-semibold text-uppercase tracking-wider small d-flex align-items-center justify-content-center justify-content-xl-start gap-2 text-info">
+                            <span class="spinner-grow spinner-grow-sm text-info" role="status" style="animation-duration: 1.5s;"></span>
+                            Electronics & Telecommunication Engineering Student
+                        </p>
+                    </div>
+                    <div class="col-xl-5 d-flex flex-wrap gap-2 justify-content-center justify-content-xl-end">
+                        <a href="mailto:anjalirajage11@gmail.com" class="neon-contact-link">
+                            <i class="fa-solid fa-envelope text-info"></i> sanchitaawatade01@gmail.com
+                        </a>
+                        <a href="tel:7420805101" class="neon-contact-link">
+                            <i class="fa-solid fa-phone text-info"></i> +91 9922938767
+                        </a>
+                        <span class="neon-contact-link">
+                            <i class="fa-solid fa-location-dot text-info"></i> Solapur, MH
+                        </span>
+                    </div>
+                </div>
+            </header>
+
+            <!-- SPLIT CONTENT INTERIOR LAYOUT GRID -->
+            <div class="p-4 p-md-5">
+                <div class="row g-4 g-xl-5">
+                    
+                    <!-- MAIN BODY SEGMENT DATA (8 COLS) -->
+                    <div class="col-lg-7 col-xl-8">
+                        
+                        <!-- CAREER VISION MAP -->
+                        <section class="mb-5">
+                            <div class="section-headline">
+                                <i class="fa-solid fa-compass"></i> Career Vision
+                            </div>
+                            <p class="mb-0 text-dim" style="font-size: 1rem; text-align: justify; font-weight: 400;">
+                                Aspiring and detail-oriented Electronics & Telecommunication Engineering student aiming to leverage strong core knowledge in digital architectures, microcontrollers, and embedded configurations within an innovative engineering ecosystem. Driven to solve intricate technical challenges while advancing organizational targets.
+                            </p>
+                        </section>
+
+                        <!-- ACADEMIC PROJECTS SECTION -->
+                        <section class="mb-5">
+                            <div class="section-headline">
+                                <i class="fa-solid fa-laptop-code"></i> Engineering Showcases
+                            </div>
+                            
+                            <div class="glass-showcase-card">
+                                <div class="d-flex justify-content-between align-items-start flex-wrap gap-2 mb-3">
+                                    <h4 class="fw-bold text-white m-0" style="font-size: 1.2rem; letter-spacing: -0.5px;">Automatic Street Light Control System</h4>
+                                    <span class="badge rounded-pill px-3 py-1.5 small fw-semibold" style="background: rgba(0, 242, 254, 0.1); color: var(--hyper-cyan); border: 1px solid rgba(0, 242, 254, 0.2);">Hardware Prototyping</span>
+                                </div>
+                                <div class="small mb-3 text-dim d-flex align-items-center gap-2 fw-medium">
+                                    <i class="fa-solid fa-microchip text-info"></i> Core Stack: Light Dependent Resistors (LDR), Switching Arrays
+                                </div>
+                                <p class="small mb-0 text-dim" style="font-size: 0.92rem; line-height: 1.6;">
+                                    Constructed and benchmarked an automated engineering layout prototype leveraging dynamic ambient light data inputs to alter electrical output mapping, successfully scaling back overall power expenditure.
+                                </p>
+                            </div>
+                        </section>
+
+                        <!-- PERSONAL PROFILE CARD METRICS -->
+                        <section class="mb-4">
+                            <div class="section-headline">
+                                <i class="fa-solid fa-fingerprint"></i> Identity Specifications
+                            </div>
+                            <div class="glass-showcase-card" style="background: rgba(255,255,255,0.005);">
+                                <div class="row g-3" style="font-size: 0.92rem;">
+                                    <div class="col-sm-4 text-white fw-semibold">Date of Birth</div>
+                                    <div class="col-sm-8 text-dim">March 01, 2008</div>
+                                    
+                                    <div class="col-sm-4 text-white fw-semibold">Permanent Matrix</div>
+                                    <div class="col-sm-8 text-dim" style="line-height: 1.5;">At post Phalavani, Tal-Malshiras, Dist-Solapur</div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <!-- SIDEBAR PROFILE COMPONENT METRICS (4 COLS) -->
+                    <div class="col-lg-5 col-xl-4">
+                        
+                        <!-- ACADEMIC PROFILE ACCREDITATION -->
+                        <section class="mb-5">
+                            <div class="section-headline">
+                                <i class="fa-solid fa-graduation-cap"></i> Education
+                            </div>
+                            <div class="glass-showcase-card d-flex flex-column gap-2">
+                                <h5 class="fw-bold text-white mb-0" style="font-size: 1.05rem;">Diploma in Engineering (EJ)</h5>
+                                <div class="text-info small fw-medium">Shivaji Polytechnic, Sangola</div>
+                                <div class="text-muted small">MSBTE Board</div>
+                                
+                                <div class="my-2">
+                                    <span class="badge rounded-pill px-3 py-1.5 small fw-semibold" style="background: rgba(255,255,255,0.05); color: var(--text-dim); border: 1px solid var(--glass-border);">Third Year Running</span>
+                                </div>
+
+                                <div class="neon-score-box mt-2">
+                                    <div class="d-flex flex-column">
+                                        <span class="text-white-50 small fw-medium" style="font-size: 0.78rem; text-transform: uppercase; letter-spacing: 1px;">Academic Score</span>
+                                        <span class="text-muted small" style="font-size: 0.75rem;">Aggregate Performance</span>
+                                    </div>
+                                    <div class="score-value">76.67%</div>
+                                </div>
+                            </div>
+                        </section>
+
+                        <!-- RE-ENGINEERED TECH SKILLS CLUSTER MATRIX -->
+                        <section class="mb-4">
+                            <div class="section-headline">
+                                <i class="fa-solid fa-cubes"></i> Core Competencies
+                            </div>
+                            <div class="d-flex flex-wrap gap-2">
+                                <div class="token-skill">Basic Electronics</div>
+                                <div class="token-skill">Analog Circuits</div>
+                                <div class="token-skill">Digital Design</div>
+                                <div class="token-skill">Communication</div>
+                                <div class="token-skill">Microcontrollers</div>
+                                <div class="token-skill">C Programming</div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
